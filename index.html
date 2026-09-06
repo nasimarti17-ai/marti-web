@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MARTÍ | Reparacions i Projectes a Domicili</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #d32f2f;
+      --primary-dark: #9a0007;
+      --primary-light: #ff6659;
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --text: #1a1a1a;
+      --text-muted: #666666;
+      --border: #e0e0e0;
+      --radius: 12px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
+
+    header {
+      background: var(--surface);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: 1px; }
+
+    .lang-switcher {
+      display: flex;
+      gap: 4px;
+      background: #eee;
+      padding: 4px;
+      border-radius: 20px;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .lang-btn.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: white;
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+
+    .hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; }
+    .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto 2rem; }
+
+    .btn-cta {
+      display: inline-block;
+      background: white;
+      color: var(--primary-dark);
+      padding: 0.9rem 2rem;
+      border-radius: 30px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem; }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--primary);
+    }
+
+    .feature-card h3 { margin-bottom: 0.5rem; color: var(--primary-dark); }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .gallery-item {
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .gallery-item .content { padding: 1.2rem; }
+    .gallery-item h4 { color: var(--primary-dark); margin-bottom: 0.4rem; }
+
+    .contact-section {
+      background: var(--surface);
+      padding: 2.5rem 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">MARTÍ</div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('ca')">CAT</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1 id="hero-title">Solucions a mida, ben fetes.</h1>
+    <p id="hero-desc">Disseny, construcció i treballs artesanals per transformar la teva casa, pati o jardí amb una atenció directa i propera.</p>
+    <a href="#contacte" class="btn-cta" id="hero-cta">Explica'ns el teu projecte</a>
+  </section>
+
+  <div class="container">
+    <div class="features">
+      <div class="feature-card">
+        <h3 id="f1-title">Treball personalitzat</h3>
+        <p id="f1-desc">Ens adaptem a les teves necessitats i espai real de la llar.</p>
+      </div>
+      <div class="feature-card">
+        <h3 id="f2-title">Atenció directa</h3>
+        <p id="f2-desc">Tracte proper des del primer dia fins a la finalització.</p>
+      </div>
+      <div class="feature-card">
+        <h3 id="f3-title">Garantia de qualitat</h3>
+        <p id="f3-desc">Materials resistents i acabats cuidats al detall.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title" id="gallery-title">Els nostres treballs</h2>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Pèrgoles">
+        <div class="content">
+          <h4 id="g1-title">Pèrgoles i Cobertes</h4>
+          <p id="g1-desc">Estructures exteriors fusta i metall.</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" alt="Tancaments">
+        <div class="content">
+          <h4 id="g2-title">Tancaments i Gardes</h4>
+          <p id="g2-desc">Protecció i privacitat per al teu pati o jardí.</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=600&q=80" alt="Reformes">
+        <div class="content">
+          <h4 id="g3-title">Reformes i Manteniment</h4>
+          <p id="g3-desc">Solucions pràctiques per a la llar.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-section" id="contacte">
+      <h2 class="section-title" id="contact-title" style="margin-bottom:1rem;">Parlem del teu projecte</h2>
+      <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Gràcies! Ens posarem en contacte aviat.');">
+        <div class="form-group">
+          <label id="lbl-name">Nom</label>
+          <input type="text" required placeholder="El teu nom">
+        </div>
+        <div class="form-group">
+          <label id="lbl-phone">Telèfon</label>
+          <input type="tel" required placeholder="600 000 000">
+        </div>
+        <div class="form-group">
+          <label id="lbl-msg">Missatge</label>
+          <textarea rows="4" required placeholder="Explica'ns breument què necessites..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit" id="btn-send">Enviar missatge</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 MARTÍ. <span id="ft-rights">Tots els drets reservats.</span></p>
+  </footer>
+
+  <script>
+    const texts = {
+      ca: {
+        heroTitle: "Solucions a mida, ben fetes.",
+        heroDesc: "Disseny, construcció i treballs artesanals per transformar la teva casa, pati o jardí amb una atenció directa i propera.",
+        heroCta: "Explica'ns el teu projecte",
+        f1T: "Treball personalitzat", f1D: "Ens adaptem a les teves necessitats i espai real de la llar.",
+        f2T: "Atenció directa", f2D: "Tracte proper des del primer dia fins a la finalització.",
+        f3T: "Garantia de qualitat", f3D: "Materials resistents i acabats cuidats al detall.",
+        gTitle: "Els nostres treballs",
+        g1T: "Pèrgoles i Cobertes", g1D: "Estructures exteriors fusta i metall.",
+        g2T: "Tancaments i Gardes", g2D: "Protecció i privacitat per al teu pati o jardí.",
+        g3T: "Reformes i Manteniment", g3D: "Solucions pràctiques per a la llar.",
+        cTitle: "Parlem del teu projecte",
+        lblName: "Nom", lblPhone: "Telèfon", lblMsg: "Missatge", btnSend: "Enviar missatge",
+        ftRights: "Tots els drets reservats."
+      },
+      es: {
+        heroTitle: "Soluciones a medida, bien hechas.",
+        heroDesc: "Diseño, construcción y trabajos artesanales para transformar tu casa, patio o jardín con una atención directa y cercana.",
+        heroCta: "Cuéntanos tu proyecto",
+        f1T: "Trabajo personalizado", f1D: "Nos adaptamos a tus necesidades y espacio real del hogar.",
+        f2T: "Atención directa", f2D: "Trato cercano desde el primer día hasta la finalización.",
+        f3T: "Garantía de calidad", f3D: "Materiales resistentes y acabados cuidados al detalle.",
+        gTitle: "Nuestros trabajos",
+        g1T: "Pérgolas y Cubiertas", g1D: "Estructuras exteriores madera y metal.",
+        g2T: "Cerramientos y Vallados", g2D: "Protección y privacidad para tu patio o jardín.",
+        g3T: "Reformas y Mantenimiento", g3D: "Soluciones prácticas para el hogar.",
+        cTitle: "Hablemos de tu proyecto",
+        lblName: "Nombre", lblPhone: "Teléfono", lblMsg: "Mensaje", btnSend: "Enviar mensaje",
+        ftRights: "Todos los derechos reservados."
+      }
+    };
+
+    function setLang(lang) {
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      const t = texts[lang];
+      document.getElementById('hero-title').innerText = t.heroTitle;
+      document.getElementById('hero-desc').innerText = t.heroDesc;
+      document.getElementById('hero-cta').innerText = t.heroCta;
+      document.getElementById('f1-title').innerText = t.f1T; document.getElementById('f1-desc').innerText = t.f1D;
+      document.getElementById('f2-title').innerText = t.f2T; document.getElementById('f2-desc').innerText = t.f2D;
+      document.getElementById('f3-title').innerText = t.f3T; document.getElementById('f3-desc').innerText = t.f3D;
+      document.getElementById('gallery-title').innerText = t.gTitle;
+      document.getElementById('g1-title').innerText = t.g1T; document.getElementById('g1-desc').innerText = t.g1D;
+      document.getElementById('g2-title').innerText = t.g2T; document.getElementById('g2-desc').innerText = t.g2D;
+      document.getElementById('g3-title').innerText = t.g3T; document.getElementById('g3-desc').innerText = t.g3D;
+      document.getElementById('contact-title').innerText = t.cTitle;
+      document.getElementById('lbl-name').innerText = t.lblName;
+      document.getElementById('lbl-phone').innerText = t.lblPhone;
+      document.getElementById('lbl-msg').innerText = t.lblMsg;
+      document.getElementById('btn-send').innerText = t.btnSend;
+      document.getElementById('ft-rights').innerText = t.ftRights;
+    }
+  </script>
+</body>
+</html>
